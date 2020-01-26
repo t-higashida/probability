@@ -1,0 +1,296 @@
+\chapter{保留}
+
+\section{保留}
+\section{ベルヌイ試行}
+\subsection{ベルヌイの試行}
+
+\定義{}
+各試行の確率空間$(S,P)$が
+\[
+	S=\{s,f\},	\quad	P(s)=p,	P(f)=q	\quad	(p+q=1)
+\]
+である独立な$n$重試行を\textbf{ベルヌイ試行}（または\textbf{独立試行}）という．
+
+一般に標本点が2個からなる試行であれば，ベルヌイ試行である．
+
+$n$個のベルヌイ試行の確率空間$(\Omega,P)$は次の通りである．
+\begin{align*}
+	\Omega	&=	S	\times	S	\times	\cdots	\times	S	\quad	\text{($n$個の$S$の直積)}	\\
+					&=	\{(x_1,x_2,\cdots	,	x_n)	\;	|	\:	x_i=s	\:	\text{or}\:	f,	\:	1	\leqq	i	\leqq	n	\}	\\
+	P(x_1,x_2,	\cdots	,	x_n)	&=	[p(s)]^r[p(f)]^{n-r}	\quad	(0	\leqq	r	\leqq	n)
+\end{align*}
+$n$回のベルヌイ試行において，ちょうど$r$回成功する確率を$P_r$とする．
+
+\定理{}
+$\displaystyle	P_r	=	\binom{n}{r}	p^rq^{n-r}$
+
+\証明
+標本点$(x_1	,	x_2,	\cdots	,	x_n)$の$n$個の$x_i$のうち，$s$が$r$個，$f$が$(n-r)$個で
+あるものの確率は
+\[
+	\underbrace{p(s)p(s)	\cdots	p(s)}_{\text{$r$個}}	
+	\times
+	\underbrace{p(f)p(f)	\cdots	p(f)}_{\text{$(n-r)$個}}
+\]
+である．ところが$s$が$r$個，$f$が$(n-r)$個あるという標本点の個数は，
+$n$個のものから$r$個となる組み合わせの個数$\displaystyle	\binom{n}{r}$に
+等しい．しかもこれらの標本点は互いに排反な事象なので
+\[
+	P_r	=	\binom{n}{r}	p^r	q^{n-r}
+\]
+となる．
+\■
+
+この$P_r$を記号$b(r	;	n	,p)$で表すことがある．
+
+\subsection{例題}
+
+\例{1}
+$1$個の硬貨を$8$回投げるとき，表が$5$回現れる確率を求めよ．
+
+\解
+
+コインは正確に作られているとすると，表の現れる確率は$1/2$である．
+\[
+	P_5	=	\binom{8}{5}	\left(\frac{1}{2}	\right)^5	\left(\frac{1}{2}	\right)^3
+	=	\frac{56}{2^8}	=	\frac{7}{32}	=	0.21875.
+\]
+\■
+
+\例{2}
+数多くのネジがあって，そのうち$5\%$が規格に合わないものとする．
+任意に$10$個を取り出した検査をしたとき，そのうち2個以上が不良品である確率を
+求めよ．
+
+\解
+$1$個取り出したとき，それが不良品である確率は$5/100	= 1/20$で，
+任意の$10$個取り出すのは，$10$回の独立試行と考えられるので，
+良品が$1$個以下である確率は
+\[
+	\binom{10}{1}	\left(\frac{1}{20}	\right)\left(\frac{19}{20}	\right)^9
+	+
+	\left(\frac{19}{20}	\right)^{10}
+	=
+	\frac{29}{20}	\left(\frac{19}{20}	\right)^9
+\]
+となる．ゆえに，求める確率は，次のようになる．
+\[
+	1	-	\frac{29}{20}	\left(\frac{19}{20}	\right)^9
+	\fallingdotseq
+	0.08613
+\]
+
+\例{3}
+$10$枚に1枚があたる福引券がある．これを何枚持つと少なくとも1枚当たる
+確率が$0.9$以上になるか？
+
+\解
+当たる確率が$1/10$である試行を$n$回独立に繰り返すものと考えられる．
+したがって，1枚も当たらない確率は$(9/10)^n$となるので，少なくとも1枚当たる
+確率は$1-(9/10)^n$である．$1-(9/10)^n	\geqq	0.9$から
+\begin{align*}
+	&\Longrightarrow	(9/10)^n	\leqq	0.1	=	1/10	\\
+	&\Longrightarrow	2n\log	3	-	n	\leqq	-1			\\
+	&\Longrightarrow	n	\geqq	\frac{1}{1-	2	\log	3	}	=	21.85
+\end{align*}
+が得られるので，22枚以上を持つとよい．
+\□
+
+\例{4}
+A,Bが賭金を出し合って勝負する．最初に$n$勝った方法勝ちとする．
+いまAが$(n-a)$回勝ち，Bが$(n-b)$回買ったところで勝負を中止する
+ならば賭け金をどのように分配するのが公平であるか？
+ただし毎回の勝負でAの勝つ確率は$p$，Bの勝つ確率は$q=1-p$とする．
+
+\解
+Aが先に$n$回勝つ確率を$P(A)$，Bが先に$n$回確率を
+$P(B)$とするとき賭け金は$P(A):P(B)$に分配するのが公平である．
+そしてAはあと$a$回，Bはあと$b$回勝つと勝負はつくのであるから，
+$(a+b-1)$回以以内に勝負の結果は決まる．したがって
+Aは$(a+b-1)$回のうち，少なくとも$a$回勝てばよい．すなわち
+$(a+b-1)$回のうち$a$回か$(a+1)$回か，$\cdots$，$(a+b-1)$回勝てば良い．
+これより
+\[
+	P(A)	=	\binom{a+b-1}{a}		p^aq^{b-1}
+				+	\binom{a+b-1}{a+1}	p^{a+1}	q^{b-2}
+				+	\cdots
+				+	p^{a+b-1}
+\]
+同様に
+\[
+	P(B)	=	\binom{a+b-1}{b}		p^{a-1}q^{b}
+				+	\binom{a+b-1}{b+1}	p^{a-2}	q^{b+1}
+				+	\cdots
+				+	q^{a+b-1}
+\]
+が得られるので，賭け金を$P(A):P(B)$に分配すればよい．
+上の回において$p=q=1/2$のとき
+\[
+	P(A)	:	P(B)	=	\left\{	\sum_{n=a}^{a+b-1}	\binom{a+b-1}{r}	\right\}
+									:
+									\left\{	\sum_{n=b}^{a+b-1}	\binom{a+b-1}{r}	\right\}
+\]
+となる．この比の計算は，二項係数の表（パスカルの三角形）によって計算できる．
+$a=1,b=2$のとき
+\[
+	P(A)	:	P(B)	=	\left\{	\sum_{n=1}^{2}	\binom{2}{r}	\right\}
+									:
+									\left\{	\sum_{n=2}^{2}	\binom{2}{r}	\right\}
+								=	3:1
+\]
+(Pascal.B 1623-1662 Chevalier de Mere 1607-1684の質問に対する解)
+
+\例{5}
+1回の試行においてある事象が起こる確率が$p$であるとき，
+$n$回の独立試行においてその事象は何回起こることが
+最も確からしいか？
+
+\解
+$\displaystyle	P_r	=	\binom{n}{r}	p^r	q^{n-r}$：$n$回中$r$回起こる確率
+を最大にする$r$の値を求める．
+\[
+	\frac{P_r}{P_{r-1}}	
+	=
+	\frac{
+				\frac{n!}{(n-r)!r!}	p^r	q^{n-r}
+				}{
+				\frac{n!}{(n-r+1)!(r-1)!}	p^{r-1}q^{n-r+1}
+			}	
+	=
+	\frac{n-r+1}{r}	
+	\frac{p}{q}
+\]
+となるので，
+$	\displaystyle	\frac{n-r+1}{r}	\frac{p}{q}	\gtreqqless	1$，
+$p+q=1$に注意して，すなわち，
+\[
+	r	\gtreqqless	(n+1)p
+\]
+なるとき，
+\[
+	P_r	\gtreqqless	P_{r-1}
+\]
+となる．したがって
+\begin{list}{}{}
+	\item	$r	<	(n+1)p$のとき，$P_{r-1}	<	P_r$となり，$P_r$は$r$とともに大きくなり，
+	\item	$r	>	(n+1)p$のとき，$P_r	<	P_{r-1}$となり，$P_r$は$r$とともに小さくなる．	
+\end{list}
+これより，$(n+1)p$が整数で，$r$がこの値に等しいとき，$P_{r-1}=P_r$となり
+この2つは他の$P_r$より大きい．
+$(n+1)p	\not\in	\Z$のとき，$r	<	(n+1)p$を満たす．$r$の最大地に対して
+$P_r$は最大となる．
+
+\section{ポアソンの法則}
+\subsection{ポアソンの法則}
+ベルヌイ試行で，試行回数$n	\rightarrow	\infty$の場合．
+\begin{align*}
+	P_r	&=	\binom{n}{r}	p^r	q^{n-r}	\\
+			&=	\frac{n(n-1)\cdots	(n-r+1)}{r!}	p^r	(1-p)^{n-r}	\\
+			&=	\frac{1}{r!}	\left(\frac{np}{n}	\right)^r
+												\left(1-\frac{np}{n}	\right)^n
+												\frac{n(n-1)\cdots	(n-r+1)}{(1-p)^r}	\\
+			&=	\frac{(np)^r}{r!}	\left(1-	\frac{np}{n}	\right)^n
+					\frac{\displaystyle	\left(1	-	\frac{1}{n}	\right)
+															\left(1	-	\frac{2}{n}	\right)
+															\cdots
+															\left(1	-	\frac{r-1}{n}	\right)
+								}{(1-p)^r}	\\
+			&	\quad	\text{(第2項分母の$n^r$を第3項分子に組み込む)}
+\end{align*}
+確率$p$が非常に小さく，$\lambda$を与えられた正数とするとき，次の不等式
+\[
+	|	n	p	-\lambda|	\leqq	\frac{1}{2}	p
+\]
+を満たす自然数$n$を考えると，
+\begin{figure}[htbp]
+\begin{center}
+\setlength{\unitlength}{10mm}
+\begin{picture}(5,1)
+
+	\thinlines \path(-2,0)(-1.55,0)
+	\thinlines \put(-1.5,0){\circle*{0.1}}
+	\thinlines \put(-1.9,-0.3){\small $(n-1)p$}
+	\thicklines \path(-1.45,0)(2.45,0)
+	\put(2.5,0){\circle*{0.05}}
+	\thinlines \put(2.4,-0.3){\small $x$}
+	\thicklines \path(2.55,0)(6.45,0)
+	\thinlines \put(6.5,0){\circle*{0.1}}
+	\thinlines \put(6.1,-0.3){\small $np$}
+	\thinlines \path(6.55,0)(7,0)
+
+	\thinlines \put(4.5,-3.75){\arc{8.5}{-1.45}{-1.09}}
+	\thinlines \put(4.5,0.5){\small $\displaystyle	\frac{1}{2}p$}
+	\thinlines \put(4.5,-3.75){\arc{8.5}{-2.05}{-1.6}}
+	
+	\thinlines \put(4.5,0){\circle*{0.1}}
+	\thinlines \put(4.5,-0.3){\small $\lambda$}
+	
+\end{picture}
+\end{center}
+\end{figure}
+$np$は$\lambda$に近いので，$p$が小さいことから，
+$n$はかなり大きな値になる．
+アルキメデスの原理によりまたこのような$\lambda$に対して$n$が選べる．
+以上より
+\[
+	np		\fallingdotseq	\lambda,
+	\quad
+	\frac{k}{n}	\fallingdotseq	0	\:\:	(k=1,2,	\cdots	r-1),
+	\quad
+	1-p	\fallingdotseq	1
+\]
+となるので，$P_r$は次の近似式で表わされる．
+\[
+	P_r	\fallingdotseq	\frac{\lambda^r}{r!}	\left(1-\frac{\lambda}{n}	\right)^n.
+\]
+$n	\rightarrow	\infty$のとき，
+$\displaystyle	\left(	1-\frac{\lambda}{n}	\right)^n	\fallingdotseq	e^{-\lambda}$
+（$e$は自然対数の底）であるから
+\begin{align*}
+	P_r	&=	\pi_r	\frac{\lambda^r}{r!}	e^{-\lambda}.	\\
+			&=	p(r	:	\lambda)
+\end{align*}
+$p$が小さいとき，$P_r$は上の近似式で与えられる（\textbf{ポアソンの法則}）．
+
+\subsection{例題}
+
+\例{1}
+$500$人の中に1月1日生まれの人が2人いる確率．
+
+\解
+\begin{list}{}{}
+	\item	1月1日に生まれる確率$p	=	1/356$．
+	\item	1月1日に生まれない確率$q	=	364/365$.
+\end{list}
+生まれたものが2人いる確率は（ベルヌイ試行では），
+\[
+		b(2;500,1/365)	=	\binom{500}{2}	\left(\frac{1}{365}	\right)^2	\left(\frac{364}{365}	\right)^{500-2}
+										=	0.23883.
+\]
+一方$\displaystyle		\lambda	\fallingdotseq	n	p	=	500	\times	\frac{1}{365}	\fallingdotseq	1.37	$
+であるから，ポアソンの法則では
+\[
+	p(2;1.37)	=	\frac{1.37^2}{2!}	\cdot	e^{-1.37}	=	0.23845	\cdots
+\]
+\□
+
+\例{2}
+$200$キロ走行する毎に平均1回の割合でパンクするタイヤで，600キロ走行するとき，タイヤの$r$回パンクする確率．
+
+\解
+1キロ毎に区切って考えると，パンクする確率$p$は$1/2000$，パンクしない確率は$1999/2000$である．
+600キロを走行するときに1回パンクする確率は，
+\[
+	\lambda	=	np	=	600	\times	\frac{1}{2000}	=	0.3.
+\]
+である．$r$回パンクするときの確率を$P_r=b(r	;	600	,	1/2000)	\fallingdotseq	P(r	,	0.3)$.
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}																									\hline
+	\multicolumn{1}{c|}{$r$}	&	0				&	1				&	2				&	3				&	$\cdots$	\\	\hline
+											$P_r$	&	0.7408	&	0.2223	&	0.0333	& 0.0033	&	$\cdots$	\\	\hline
+\end{tabular}
+\end{center}
+ポアソンの法則は，\textbf{稀少現象}によって起こる．
+\begin{align*}
+	
+\end{align*}

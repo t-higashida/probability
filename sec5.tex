@@ -1,0 +1,200 @@
+\chapter{確率変数}
+
+\section{確率変数}
+
+\subsection{確率変数の定義}
+\定義{1}
+一般に，根元事象$e$の集合$S$から$\R$への写像$F$において，変数$X$が
+$\R$のある値$x_i$をとる確率を$P(X=x_i)$と書き，次のように定める．
+$	A_i=\{e	\:	|	\:	X(e)	=x_i	\}	$とするとき，
+\[
+	P(X=x_i)	=	P(A_i)	=	p_i
+\]
+$X$を\textbf{確率変数}という．
+
+\定義{2}
+一般に，確率変数$X$のとる値を$x_1,	\cdots	,	x_n$とし，
+$X$がこれらの値のとる確率を，それぞれ$P_1	,	\cdots	,	P_n$とする．
+このとき$x_i$と$P_i	\:	(i=1,	\cdots	n)$との対応を列挙したものを，
+確率変数$X$の\textbf{確率分布}という．
+
+\section{確率分布の例}
+
+\subsection{二項分布}
+ベルヌイ試行．ある事象$A$の起こる確率を$p$とするとき，
+$A$が$n$回中に$x$回起こる確率は
+\[
+	p(x)	=	\binom{n}{x}	p^x	(1-p)^{n-x}	\quad	(x=0,1,	\cdots	,	n)
+\]
+
+\subsection{ポアソン分布}
+$n$が十分に大きく$p$が小さい値のとき
+\begin{align*}
+	&	b(x;	n	,p)	\fallingdotseq	\frac{\lambda^x}{x!}	e^{-\lambda}	=	p(x	;	\lambda)	\\
+	&	p(x)	=	\frac{\lambda^x}{x!}	e^{-\lambda}	\quad	(x=0,1,2,	\cdots	n)
+\end{align*}
+
+\subsection{幾何分布}
+独立試行で，事象Aの起こる確率を$p$とするとき第$x$回目に初めてAが起こる確率は
+\[
+	p(x)	=	p(1-p)^{x-1}	\quad	(x=1,2,\cdots	n).
+\]
+
+\subsection{超幾何分布}
+$N$個の物があって，そのうち$M$はある性質をもち，
+残りの$N-M$はその性質を持たない．$N$個の中から$n$個を取り出したとき，
+そのうち$x$がその性質をもち，残りの$x-x$個がその性質を持たないような確率は，
+\[
+	p(x)	=	\frac{\displaystyle	\binom{M}{x}\binom{N-M}{n-x}}{\displaystyle	\binom{N}{n}}
+	\quad	(x=0,1,2,	\cdots	,n)
+\]
+これを変形して近似式を得る．
+\begin{align*}
+	h(x;N,M,n)
+		&=	\frac{\displaystyle	\binom{M}{x}	\binom{N-M}{n-x}}{\displaystyle	\binom{N}{n}}	\\
+		&=	\frac{M!}{x!(M-x)!}\frac{(N-M)!}{(n-x)!((N-M-n+x)!}\frac{n!(N-n)!}{N!}	\\
+		&=	\frac{n!}{x!(n-x)!}	\times	\\
+		&	\quad	\frac{M(M-1)\cdots(M-x+1)	\cdot	(N-M)(N-M-1)\cdots(N-M-n+x+1)}{N(N-1)\cdots(N-n+1)}	\\
+		&=	\frac{n!}{x!(n-x)!}	\times	\\
+		&	\quad	\frac{M(M-1)	\cdots(M-x+1)	\cdot	(N-M)(N-M-1)	\cdots	(N-M-n+x+1)}{N^n(1-1/N)\cdots(1-(n-1)/N)}	\\
+		&=	\frac{n!}{x!(n-x)!}	N^x	p	(p-1/N)	\cdots	(p	-	(x-1)/N)	\times\\
+		&	\quad	\frac{N^{n-x}(1-p)(1-p-1/N)	\cdots	(1-p-(n-x-1)/N)}{N^n(1-1/N)	\cdots	(1-(n-1)/N)}\\
+		&	\quad	\quad	\text{但し	$p	=	\frac{M}{N}$}	\\
+		&=	\frac{n!}{x!(n-x)!}	p	(p-1/N)	\cdots	(p	-	(x-1)/N)	\times\\
+		&	\quad	\frac{(1-p)(1-p-1/N)	\cdots	(1-p-(n-x-1)/N)}{(1-1/N)	\cdots	(1-(n-1)/N)}\\
+		&	\approx	\binom{n}{x}p^x(1-x)^{n-x}	\quad	\text{但し$N	\gg	n$，実用上は$n/N	\leqq	10^{-1}$}	\\
+		&=	b(x;	n,	p)
+\end{align*}
+
+\subsection{負の二項分布}
+独立試行で事象Aが起こる確率を$p$，起こらない確率を$q$とする．
+いま，ある回までに丁度$r$回起きたとする．このとき$A$の起こらなかった回数が
+$x$である確率を求める.Aが起こることを$1$．起こらないことを$0$とすると，
+最後が$1$で$0$が$x$回，$1$が$r$回並ぶ確率は，
+\begin{align*}
+	P(x)	&=	\binom{r+x-1}{x}p^r	q^x	\\
+				&=	\frac{(r+x-1)(r+x-2)	\cdots	(r+1)r}{x!}	p^r	q^x	\\
+				&=	\frac{-r(-r-1)\cdots	(-r+x+2)(-r-x+1)}{x!}	p^r	(-q)^x
+				&=	\binom{-r}{x}	p^r	(-q)^x
+\end{align*}
+$r	>	0$のとき$p(x)$は\textbf{負の二項分布}という．
+$r	=1$のとき幾何分布になる．
+
+\例{6}
+ある人が1つのマッチ箱を左右のポケットに1個ずついれ，マッチが必要なときに
+ランダムにポケットを選ぶ（ベルヌイ試行,$p=1/2$）．はじめに両方の箱に
+$N$本ずつのマッチが入っているものとする．いま一方の箱が空になったとしったとき，他方の箱に
+$0,1,\cdots,	N$本のマッチが残っている確率（\textbf{Bahachのマッチ箱の問題}）．
+
+\解
+
+$x$本残っているとき，行われた試行の回数は一方のポケットを選んだ回数は
+$N+1$会，他方のポケットを選んだ回数は$(N-x)$会よって行われた試行の回数は
+$N+1+N-x	=	2N	-x+1$回．この事象の起こる確率$p(x)$は
+\[
+	p(x)	=	\binom{2N-x}{x}	\left(	\frac{1}{2}	\right)^{2N-x+1}
+\]
+これが左右，両方のポケットでおこるので
+\[
+	2p(x)	=	2	\binom{2N-x}{x}	2^{x-1-2N}	=	\binom{2N-x}{x}	2^{x-2N}.
+\]
+
+\section{期待値}
+\subsection{１つの確率変数の期待値}
+
+\定義{1}確率変数$X$のとる値を$x_1,x_2,	\cdots,	x_n$とし，
+$X$がこれらの期待値をとる確率を，それぞれ$p_1,	p_2,	\cdots	,	p_n$とする．
+このとき,
+\[
+	x_1p_1	+	x_2p_2	+	\cdots	+	x_np_n
+\]
+を$X$の\textbf{期待値}といい，$E(X)$で表わす.
+
+\subsection{2つの確率変数の和の期待値}
+
+\定義{2}
+2つの確率分布$X,Y$において
+\begin{align*}
+	P(X=x_i)	=	p(x_i)		&	(i=1,2,	\cdots	,m)	\\
+	P(Y=y_i)	=	p(y_i)		&	(i=1,2,	\cdots	,n)
+\end{align*}
+が成立するとき，これから次のように，
+\[
+	p(X=x_i,Y=y_i)	=	p(x_i,y_i)
+\]
+と定めた確率分布を$X$と$Y$の\textbf{複合分布}という．
+上の3つの式については次の関係がある．
+\begin{align}
+	&\sum_{i}	p(x_i)			=	\sum_{j}	p(x_j)	=	\sum_{i,j}	p(x_i,y_j)	=	1	\\
+	&\sum_{i}	p(x_i,y_j)	=	p(y_j)	\\
+	&\sum_{j}	p(x_i,y_j)	=	p(x_i)	
+\end{align}
+
+\定義{3}
+2つの確率変数$X,Y$が与えられたとき，和$X+Y$の期待値とは，
+\[
+	E(X+Y)	=	E(X)+	E(Y)
+\]
+ことをいう．
+
+\定理{1}
+\[
+	E(X+Y)	=	E(X)	+	E(Y)
+\]
+
+\定理{2}
+\begin{equation}
+	E(X_1+X_2	+	\cdots	+	X_n)	=	E(X_1)	+	E(X_2)	+	\cdots	+	E(X_n)
+\end{equation}
+
+\定理{3}
+\[
+	E(aX+b)	=	aE(X)	+	b.
+\]
+
+\subsection{2つの確率変数の積の期待値}
+
+\定義{4}
+任意の実数$x_i$および$y_i$に対して
+\[
+	P(X=x_i,	Y=y_j)=P(X=x_i)P(Y=y_j)	\text{が成立}
+	\Longleftrightarrow	\textbf{確率変数$X$と$Y$は独立}
+\]
+
+\定義{5}
+任意の実数$ x_i^{(1)},	\cdots	,	x_k^{(n)}$に対して
+\begin{align*}
+	&	P(X_i	=	x_i^{(1)},X_j	=	x_j^{(2)},	\cdots	,	X_k	=	x_k^{(n)})
+		=	P(X_i	=	x_i^{(1)})P(X_j	=	x_j^{(2)})	\cdots	P(X_k	=	x_k^{(n)})
+		\text{が成立}\\
+	&	\Longleftrightarrow	\\
+	&	\text{\textbf{確率変数$X_1,X_2,\cdots	X_n$は独立}である}	
+\end{align*}
+
+\定義{6}
+事象Aが起こるとき値$1$をとり，事象Aが起こらないときは値$0$をとる確率変数
+を事象$A$の定義関数といい，$I_A$で表わす．
+
+\定理{5}
+$X$と$Y$が独立な確率変数のとき
+\[
+	E(XY)=E(X)E(Y)
+\]
+
+\定理{6}
+$n$個の確率変数$X_1,	\cdots	,	X_n$が独立ならば，
+\[
+	E(X_1	\cdots	X_n)=E(X_1)\cdots	E(X_n).
+\]
+
+\subsection{確率分布の期待値}
+
+\textbf{二項分布$\displaystyle	\cdots	p(k)	=	\binom{n}{k}	p^k	(1-p)^{n-k}$の期待値}
+\begin{align*}
+	E(X)	&=	\sum_{k=0}^n	k	p(k)	=	\sum_{k=0}^n	k\binom{n}{k}	p^k	(1-p)^{n-k}	\\
+				&=	0	\times	\binom{n}{0}	p^n(1-p)^n	+	\sum_{k=1}^n	k\binom{n}{k}	p^k	(1-p)^{n-k}	\\
+				&=	\sum_{k=1}^n	\frac{n!}{(k-1)!(n-k)!}	p^k	(1-p)^{n-k}	\\
+				&=	np	\sum_{k-1=0}^{n-1}	\frac{(n-1)!}{(n-1)!(n-1-(k-1))!}	p^{k-1}	q^{(n-1)-(k-1)}	\\
+				&=	np	\sum_{k-1=0}^{n-1}	\binom{n-1}{k-1}	p^{k-1}	q^{(n-1)-(k-1)}	\\
+				&=	np(p+q)^{n-1}	=	np
+\end{align*}

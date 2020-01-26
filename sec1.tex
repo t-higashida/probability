@@ -1,0 +1,205 @@
+\chapter{確率の定義}
+
+\section{確率の古典的定義}
+
+\section{確率の統計的定義}
+
+\section{確率の公理的定義}
+
+\subsection{由来}
+
+\subsection{コルモゴロフの確率論}
+
+\textbf{標本空間$\Omega$}：すべての可能な結果の集合．
+
+\textbf{根元事象，標本点$\omega$}：可能な結果，$\omega	\in	\Omega$．
+
+\textbf{事象}：標本空間$\Omega$の部分集合．
+
+\textbf{集合族$\mathscr{F}$}：標本空間$\Omega$の部分集合の集合．
+
+確率論では次の３つの条件を満たす集合族$\mathscr{F}$のみを考える．
+\begin{list}{}{}
+	\item	（１）$\Omega	\in	\mathscr{F}$．
+	\item	（２）$A,B	\in	\mathscr{F}	\:	\Rightarrow	\omega	A	\cup	B,\:	A^C,\:	A	\cap	B,\:	B^c	\in	\mathscr{F}$，
+	\item	（３）$A_i	\in	\mathscr{F}	\:	(i	\in	\N)	\:	\Rightarrow	\omega	\bigcap_{i\in\N}	A_i,	\:	\bigcup_{i\in\N}	A_i	\in	\mathscr{F}$
+\end{list}
+（１）（２）（３）を満たす集合族$\mathscr{F}$を\textbf{完全加法族}または\textbf{$\sigma$集合体}といい，
+（１）（２）だけを満たすとき\textbf{有限加法族}という．
+
+\例{1}
+１つのサイコロを投げる場合，標本空間$\Omega$は，６つの根元事象
+$\omega_1,\omega_2,\omega_3,\omega_4,\omega_5,\omega_6$から成る．
+（$\omega_i$は$i$の目が出ることを意味する．）この場合，有限加法族$\mathscr{F}$は，
+$2^6=64$個の元からなっている．
+\begin{align*}
+	&	\varnothing																																			
+	&	1		\\
+	&	\{\omega_1\},\{\omega_2\},\{\omega_3\},\{\omega_4\},\{\omega_5\},\{\omega_6\}
+	&	6		\\
+	&	\{\omega_1,\omega_2\},\{\omega_1,\omega_3\},\cdots,\{\omega_4,\omega_6	\},\{\omega_5,\omega_6	\}
+	&	15	\\
+	&	\{\omega_1,\omega_2,\omega_3\},	\cdots	,	\{\omega_4,\omega_5,\omega_6\}
+	&	20	\\
+	&	\{\omega_1,\omega_2,\omega_3,\omega_4\},\cdots,\{\omega_3,\omega_4,\omega_5,\omega_6	\}
+	&	15	\\
+	&	\{\omega_1,\omega_2,\omega_3,\omega_4,\omega_5\},
+		\cdots,
+		\{\omega_2,\omega_3,\omega_4,\omega_5\,\omega_6\}
+	&	6		\\
+	&	\Omega	&	1
+\end{align*}
+
+\例{2}
+自然数全体の集合は，標本空間$\Omega	=	\{1,2,	\cdots	,	n	,\cdots\}$である．
+部分集合として偶数全体$A$をとると，$A=\{2,4,\cdots	,	2n,	\}$となる．
+部分集合として素数全体$B$をとると，$B=\{2,3,5,7,\cdots	\}$となる．
+この場合に，
+\begin{align*}
+	A&=	A_1	\cup	A_2	\cup	\cdots	\cup	A_n	\cdots	=
+			2	\cup	4	\cup	\cdots	\cup	2n	\cup	\cdots	\\
+	B&=	B_1	\cup	B_2	\cup	\cdots	\cup	B_n	\cdots	=
+			2	\cup	3	\cup	5	\cup	\cdots	\\	
+\end{align*}
+は上の（３）の条件より，やはり集合族$\mathscr{F}$の元である．
+
+\subsection{確率の公理的定義}
+事象$A,B$が\textbf{排反}であるとは$A,B	\in	\mathscr{F}	\Rightarrow	A	\cap	B	=	\varnothing$となることを
+いう．$A$と$A^c$は互いに\textbf{余事象}であるという．
+集合$\Omega$を\textbf{全事象，確実な事象}という．$\Omega^c=\varnothing$を\textbf{空事象，不可能な事象}
+という．
+
+$A	\cup	B$：\textbf{和事象}「事象$A$，$B$のうち少なくとも一方が起こる」．
+
+$A	\cap	B$：\textbf{積事象}「事象$A$，$B$が同時にまたは引き続いて起こる」．
+
+\textbf{確率の公理的定義}$\cdots$有限加法族$\mathscr{F}$に対しては次の３つの公理により定義する．
+
+\begin{list}{}{}
+	\item	\公理{1}
+					$\forall	A	\in	\mathscr{F}$に対して，実数$P(A)	\geqq	0$が定まる．この実数を事象$A$の\textbf{確率}という．
+	\item	\公理{2}
+					$P(\Omega	)	=1$．
+	\item	\公理{3}（\textbf{有限加法性の公理}）
+				事象$A_1,	A_2,	\cdots	,	A_n$が互いに排反であるならば，
+				\[	P(A_1	\cup	A_2	\cup	\cdots	\cup	A_n)	=	P(A_1)	+	P(A_2)	+	\cdots	+	P(A_n)	\]
+\end{list}
+確率が導入されている$\mathscr{F}$の元を\textbf{確率事象}という．
+
+\定理{1}
+不可能な事象$\varnothing$の確率は$0$である．
+
+\証明
+$\Omega	\cup	\varnothing	=	\Omega$，$\Omega	\cap	\varnothing	=	\varnothing$で
+$\Omega$と$\varnothing$は排反であるから，公理3を用いると，$P(\Omega)	=	P(\varnothing)+P(\Omega)$．
+したがって$P(\varnothing)=0$．
+\■
+
+\定理{2}
+任意の事象$A$に対して$P(A^c)=1	-	P(A)$.
+
+\証明
+$A	\cup	A^c	=	\Omega$，$A	\cap	A^c	=	\varnothing$であるから
+公理3より$P(\Omega)	=	P(A)+P(A^c)$，公理2より$1	=	P(A)	+	P(A^c)$
+したがって$P(A^c)=1	-	P(A)$．
+\■
+
+\定理{3}
+$A$がいかなる事象であっても$0	\leqq	P(A)	\leqq	1$．
+
+\証明
+定理2と公理1から$1-P(A)	=P(A^c)	\geqq	0$，したがって
+$P(A)	\leqq	1$．これと公理1から導かれる．
+\■
+
+\定理{4}
+事象$A$,$B$について$A	\subseteq	B$ならば，$P(A)	\leqq	P(B)$．
+
+\証明
+$A	\subseteq	B$ならば，$B(	=	A	\cup	(B-A)$，これに公理3と公理1を用いると
+$P(B)	=	P(A)	+	P(B-A)	\geqq	P(A)$となる．
+\■
+
+\定理{5}
+(確率の加法定理)
+任意の2つの事象$A$，$B$に対して
+\[
+	P(A	\cup	B)	=	P(A)+P(B)	-P(A	\cap	B)
+\]
+が成立する．とくに$A,B$が排反ならば，$P(A	\cap	B)=P(\varnothing)	=0$であるから
+\[
+	P(A+B)	=	P(A)	+	P(B)
+\]
+\証明
+$A	\cup	B	=	A	\cup	(B	-	A	\cap	B)$と$B	=(A	\cap	B)	\cup	(B-A	\cap	B)$において
+公理3を用いると
+\begin{align*}
+	P(A	\cup	B)	&=	P(A)	+	P(B	-	A	\cap	B)	\\
+	P(B)	&=	P(A	\cap	B)	+	P(B	-	A	\cap	B)
+\end{align*}
+上の式から下の式を引いて$-P(B)$を右辺へ移行するとよい
+\■
+
+\定理{6}
+\begin{align*}
+	&P(A	\cup	B)	\leqq	P(A)	+	P(B)	\\
+	&P(A_1	\cup	A_2	\cup	\cdots	\cup	A_n)	\leqq	P(A_1)	+	P(A_2)	+	\cdots	+P(A_n)
+\end{align*}
+
+\証明
+最初の式は定理5の$P(A	\cap	B)	\geqq	0$から導かれる．第2式は
+数学的帰納法による．
+\■
+
+完全加法族$\mathscr{F}$に対しては，公理3の代わりに公理3'を基礎におく．
+
+\公理{3'}
+(完全加法性の公理)
+事象$A$が互いに排反な可算無限個の事象
+$A_1,A_2,	\cdots,	A_n,	\cdots$の和に等しいとき，すなわち
+\[
+	A=A_1	+	A_2	+	\cdots	+	A_n	+	\cdots	=	\sum_{i=1}^\infty	P(A_i)
+\]
+ならば，
+\[
+	P(A)	=	P(A_1)	+	P(A_2)	+	\cdots	+	P(A_n)	+	\cdots	+	=	\sum_{i=1}^\infty	P(A_i)
+\]
+が成立する．
+
+\例{3}
+正しいサイコロにおいては
+\[
+	P(\omega_1)=P(\omega_2)=P(\omega_3)=P(\omega_4)=P(\omega_5)=P(\omega_6)	=	\frac{1}{6}
+\]
+と定める．不正なサイコロにおいては調査の結果
+\[
+	P(\omega_1),P(\omega_2),P(\omega_3),P(\omega_4),P(\omega_5),P(\omega_6)
+\]
+の値が必ずしもすべて等しいとは限らない．
+
+\例{4}
+$n$を有限とするとき，$n$より小さい偶数の個数は$N$が偶数のとき$n/2$，$n$が奇数の場合
+$(n-1)/2)$である．したがって
+\[
+	\lim_{n\rightarrow	\infty}	\frac{n/2}{n}	=	\frac{1}{2},
+	\quad
+	\lim_{n\rightarrow	\infty}	\frac{(n-1)/2}{n}	=	\frac{1}{2}
+\]
+から，次にように定められる．
+
+自然数全体から1つの数を取り出したとき，それが偶数である確率は$1/2$である．
+
+\例{5}
+素数の個数については次のことが知られている．$x>0$を超えない素数の個数を
+$\pi(x)$とすれば
+\[
+	\lim_{x\rightarrow	\infty}	\frac{\pi(x)}{x	/	\log	x}	=1
+\]
+となる.これより
+\[
+	\lim_{x\rightarrow	\infty}	\frac{\pi(x)}{x}	=	\lim_{x\rightarrow	\infty}	\frac{1}{\log	x}
+\]
+となる．したがって
+
+「自然数全体から1つ数を取り出したとき，それが素数である確率は$x$が大きいとき，$1/\log	x$に
+ほぼ等しい」．
